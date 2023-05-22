@@ -3,36 +3,23 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
+// https://www.apollographql.com/docs/react/get-started/
 const client = new ApolloClient({
   uri: "https://countries.nausicaa.wilders.dev/",
   cache: new InMemoryCache(),
 });
 
-// first query to test apollo client
-client
-  .query({
-    query: gql`
-      query GetContinents {
-        continents {
-          name
-          countries {
-            code
-          }
-        }
-      }
-    `,
-  })
-  .then((result) => console.log(result));
-
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <ApolloProvider client={client}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ApolloProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
