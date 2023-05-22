@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 interface ContinentType {
   name: string;
   code: string;
+  emoji: string;
 }
 
 const GET_CONTINENT = gql`
@@ -14,6 +15,7 @@ const GET_CONTINENT = gql`
       countries {
         code
         name
+        emoji
       }
     }
   }
@@ -32,11 +34,12 @@ function Continent() {
 
   return (
     data &&
-    data.continent.countries.map(({ name, code }: ContinentType) => (
+    data.continent.countries.map(({ name, code, emoji }: ContinentType) => (
       <div>
         <h3 onClick={() => navigate(`/continents/${continentCode}/${code}`)}>
           {name}
         </h3>
+        <p>{emoji}</p>
       </div>
     ))
   );
