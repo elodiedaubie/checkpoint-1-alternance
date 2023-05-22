@@ -1,14 +1,16 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface ContinentsType {
   name: string;
+  code: string;
 }
 
 const GET_CONTINENTS = gql`
   query GetContinents {
     continents {
+      code
       name
     }
   }
@@ -21,9 +23,10 @@ function Continents() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.continents.map(({ name }: ContinentsType) => (
+  return data.continents.map(({ name, code }: ContinentsType) => (
     <div>
-      <h3 onClick={() => navigate(`/continents/${name}`)}>{name}</h3>
+      <h3 onClick={() => navigate(`/continents/${code}`)}>{name}</h3>
+      <p>{code}</p>
     </div>
   ));
 }
