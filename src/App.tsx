@@ -10,15 +10,12 @@ function App() {
     <div className="App">
       <Routes>
         {/* Une page qui affiche la liste des liens vers chaque continent: */}
-        <Route path="/continents" element={<Continents />}></Route>
+        <Route path="/" element={<Continents />}></Route>
         {/* Une page qui affiche, pour un continent donné, la liste des liens vers chaque pays */}
-        <Route
-          path="/continents/:continentCode"
-          element={<Continent />}
-        ></Route>
+        <Route path="/:continentCode" element={<Continent />}></Route>
         {/* Une page qui affiche les détails d'un pays donné */}
         <Route
-          path="/continents/:continentCode/:countryCode"
+          path="/:continentCode/:countryCode"
           element={<Country />}
         ></Route>
       </Routes>
