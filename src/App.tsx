@@ -13,12 +13,12 @@ function App() {
         <Route path="/continents" element={<Continents />}></Route>
         {/* Une page qui affiche, pour un continent donné, la liste des liens vers chaque pays */}
         <Route
-          path="/continents/:continentName"
+          path="/continents/:continentCode"
           element={<Continent />}
         ></Route>
         {/* Une page qui affiche les détails d'un pays donné */}
         <Route
-          path="/continents/:continentName/:countryName"
+          path="/continents/:continentCode/:countryCode"
           element={<Country />}
         ></Route>
       </Routes>
