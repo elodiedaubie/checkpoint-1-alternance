@@ -26,7 +26,6 @@ function Continents() {
   return data.continents.map(({ name, code }: ContinentsType) => (
     <div>
       <h3 onClick={() => navigate(`/continents/${code}`)}>{name}</h3>
-      <p>{code}</p>
     </div>
   ));
 }
